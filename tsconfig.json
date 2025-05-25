@@ -1,4 +1,12 @@
 {
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "@emotion/react"
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

@@ -1,0 +1,9 @@
+export { default as Logo } from "./Tradeon.svg";
+export { default as Banner } from "./banner.png";
+export { default as Chat } from "./chatBtnpng.png";
+export { default as Post } from "./postBtn.png";
+export { default as Group } from "./groupBuyingBtn.png";
+export { default as Evaluation } from "./evaluateBtn.png";
+export { default as PlusBtn } from "./plusBtn.svg";
+export { default as Product } from "./product.png";
+export { default as ProfileImg } from "./profile.png";

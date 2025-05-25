@@ -11,9 +11,14 @@ export default defineConfig({
         plugins: ["@emotion/babel-plugin"],
       },
     }),
-    tsconfigPaths(),
+    tsconfigPaths({
+      projects: ["tsconfig.app.json"],
+    }),
     svgr({
-      include: "**/*.svg?react",
+      svgrOptions: {
+        icon: true,
+      },
+      include: "**/*.svg",
     }),
   ],
 });
