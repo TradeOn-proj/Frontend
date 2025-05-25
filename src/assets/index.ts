@@ -7,3 +7,4 @@ export { default as Evaluation } from "./evaluateBtn.png";
 export { default as PlusBtn } from "./plusBtn.svg";
 export { default as Product } from "./product.png";
 export { default as ProfileImg } from "./profile.png";
+export { default as Logo2 } from "./TradeOnFooter.svg"

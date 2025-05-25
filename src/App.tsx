@@ -1,4 +1,5 @@
 import Header from "@components/layout/Header/header";
+import Footer from "@components/layout/Footer/Footer"
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { globalStyles } from "./styles/global";
@@ -21,6 +22,7 @@ function App() {
         <Global styles={globalStyles} />
         <Header />
         <Outlet />
+        <Footer />
       </QueryClientProvider>
     </>
   );
