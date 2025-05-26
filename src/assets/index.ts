@@ -8,3 +8,6 @@ export { default as PlusBtn } from "./plusBtn.svg";
 export { default as Product } from "./product.png";
 export { default as ProfileImg } from "./profile.png";
 export { default as Logo2 } from "./TradeOnFooter.svg"
+export { default as Search } from "./searchIcon.svg"
+export { default as Delete } from "./deleteBtn.svg"
+export { default as Image } from "./image.svg"
