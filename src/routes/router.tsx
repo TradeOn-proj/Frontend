@@ -4,6 +4,9 @@ import routes from "@constants/routes";
 import Home from "@pages/Home/Home";
 import Search from "@pages/Search/Search";
 import SearchResult from "@pages/SearchResult/SearchResult";
+import Login from "@pages/Login/Login";
+import SignIn from "@pages/SignIn/SignIn";
+import KeyWordPage from "@pages/KeyWordPage/KeyWordPage";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +18,10 @@ const router = createBrowserRouter([
         path: routes.search,
         element: <Search />,
       },
-      { path: routes.SearchResult, element: <SearchResult /> },
+      { path: routes.searchresult, element: <SearchResult /> },
+      { path: routes.login, element: <Login /> },
+      { path: routes.signin, element: <SignIn /> },
+      { path: routes.keyword, element: <KeyWordPage /> },
     ],
   },
 ]);

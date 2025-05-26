@@ -41,7 +41,12 @@ const SearchResult: React.FC = () => {
 
   return (
     <div css={mainContainer}>
-      <SearchInput query={query} setQuery={setQuery} onSearch={handleSearch} />
+      <SearchInput
+        query={query}
+        setQuery={setQuery}
+        onSearch={handleSearch}
+        placeholder={"무엇이든 검색해 보세요"}
+      />
       <div css={textContainer}>
         <span css={pointStyle}>‘아이더 바람막이 자켓'</span>에 대한 총
         <span css={pointStyle}>9</span>

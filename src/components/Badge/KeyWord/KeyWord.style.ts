@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 
 export const container = css`
-  width: 180px;
+  min-width: 180px;
+  width: fit-content;
   height: 48px;
   border-radius: 36px;
   background-color: #4d4637;
@@ -11,4 +12,5 @@ export const container = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 `;
