@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 
 export const mainContainer = css`
   width: 1024px;
-  height: 2647px;
   padding-top: 50px;
   margin: 0 auto;
   display: flex;
