@@ -12,6 +12,8 @@ import SearchResult from "@pages/SearchResult/SearchResult";
 import Login from "@pages/Login/Login";
 import SignIn from "@pages/SignIn/SignIn";
 import KeyWordPage from "@pages/KeyWordPage/KeyWordPage";
+import TradeHistory from "@pages/Trade/TradeHistory";
+import Review from "@pages/Review/Review";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
     { path: routes.login, element: <Login /> },
     { path: routes.signin, element: <SignIn /> },
     { path: routes.keyword, element: <KeyWordPage /> },
+    { path: routes.tradehistory, element: <TradeHistory /> },
+    { path: routes.review, element: <Review /> },
+
+
     ],
   },
 ]);

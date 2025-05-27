@@ -1,6 +1,6 @@
 const routes = {
   main: "/",
-  home: "/home",
+  home: "/",
   value: "/value",
   upload: "/upload",
   valueupload: "/valueupload",
@@ -11,6 +11,8 @@ const routes = {
   login: "/login",
   signin: "/signin",
   keyword: "/keywordpage",
+  tradehistory: "/tradehistory",
+  review: "/review",
 } as const;
 
 export default routes;

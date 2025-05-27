@@ -7,6 +7,7 @@ import Vote from "./Vote/VotePrice"
 import SearchInput from "./SearchInput/SearchInput";
 import LoginTextField from "./LoginTextField/LoginTextField";
 import LoginButton from "./Button/LoginButton/LoginButton";
+import TradeCard from "./Card/TradeCard";
 export {
   Header,
   KeyWord,
@@ -17,4 +18,5 @@ export {
   LoginButton,
   Buttons, 
   Vote,
+  TradeCard,
 };
