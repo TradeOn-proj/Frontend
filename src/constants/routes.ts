@@ -12,6 +12,7 @@ const routes = {
   signin: "/signin",
   keyword: "/keywordpage",
   tradehistory: "/tradehistory",
+  review: "/review",
 } as const;
 
 export default routes;
