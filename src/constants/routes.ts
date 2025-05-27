@@ -4,7 +4,8 @@ const routes = {
   value: "/value",
   upload: "/upload",
   valueupload: "/valueupload",
-  detail: "/detail"
+  detail: "/detail",
+  valuedetail: "/valuedetail"
 } as const;
 
 export default routes;

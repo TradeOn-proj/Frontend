@@ -1,16 +1,12 @@
 import {container, titleContainer, title, date, row, image
-    , column, productName, keywordlist, keyword, chat, infoContainer
-    ,tagContainer, tag, line, describe, keywordProduct, show
-} from "./Detail.style"
+    , column, productName, keywordlist, keyword,  infoContainer
+    ,tagContainer, tag, line, describe, price
+} from "./VauleDetail.style"
 import {Product} from "@assets/index";
-import {Card} from "@components/index";
+import {Vote} from "@components/index";
 
-const Detail = () =>{
-    const products = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-  ];
+const ValueDetail = () =>{
+
     return(
     <div css={container}>
      <div css={titleContainer}>
@@ -29,7 +25,6 @@ const Detail = () =>{
                 <span css={keyword}>#바람막이</span>
                 </div>
               </div>
-              <button css={chat}>채팅하기</button>
             </div>
             <div css={tagContainer}>
                 <div css={tag}>#바람막이</div>
@@ -41,14 +36,10 @@ const Detail = () =>{
         <div css={describe}>착용 1회 한 아이더 바람막이 자켓입니다. 
             50000원에 구매하였습니다.</div>
         <div css={line} />
-        <div css={show}>비슷한 키워드 상품 보기</div>
-          <div css={keywordProduct}>
-          {products.map((product) => (
-            <Card key={product.id} />
-          ))}
-        </div>
+        <div css={price}>이 상품은 얼마가 적당할까요?</div>
+        <Vote />
     </div>
     );
 };
 
-export default Detail;
+export default ValueDetail;

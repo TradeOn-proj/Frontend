@@ -77,18 +77,6 @@ export const keyword = css`
   font-weight: 800;
 `
 
-export const chat = css`
-  border-radius: 36px;
-  background: #3E83E9;
-  width: 180px;
-  height: 48px;
-  color: #FFF;
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-weight: 600;
-  margin-left: 180px;
-`
 
 export const tagContainer = css`
   display: flex;
@@ -125,19 +113,13 @@ export const describe = css`
   font-style: normal;
   font-weight: 600;
   margin-top: 60px;
-  margin-bottom: 258px;
+  margin-bottom: 40px;
 `
-export const keywordProduct = css`
-  display: flex;
-  flex-direction: row;
-`
-
-export const show=css`
-  color: #000;
+export const price=css`
+  color: #3C3636;
   font-family: Pretendard;
   font-size: 24px;
   font-weight: 800;
-  margin-top: 60px;
-  margin-bottom: 42px;
-
+  margin-top: 54px;
 `
+

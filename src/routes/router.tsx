@@ -6,6 +6,8 @@ import Value from "@pages/Value/Value"
 import Upload from "@pages/Product/Upload";
 import ValueUpload from "@pages/Value/ValueUpload";
 import Detail from "@pages/Product/Detail";
+import ValueDetail from "@pages/Value/ValueDetail";
+
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
     { path: routes.upload, element: <Upload />},
     { path: routes.valueupload, element: <ValueUpload />},
     { path: routes.detail, element: <Detail />},
+    { path: routes.valuedetail, element: <ValueDetail />},
 
   ]
       
