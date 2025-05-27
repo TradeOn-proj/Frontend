@@ -21,6 +21,7 @@ const Search: React.FC = () => {
           query={query}
           setQuery={setQuery}
           onSearch={handleSearch}
+          placeholder={"무엇이든 검색해 보세요"}
         />
       </div>
     </div>

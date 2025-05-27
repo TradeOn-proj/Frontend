@@ -12,7 +12,7 @@ export const mainContainer = css`
 export const buttonContainer = css`
   display: flex;
   flex-direction: row;
-  gap: 110px;
+  justify-content: space-between;
 `;
 
 export const buttonEach = css`
@@ -25,6 +25,11 @@ export const buttonEach = css`
   gap: 19px;
   align-items: center;
   font-weight: 700;
+`;
+
+export const iconStyle = css`
+  height: 150px;
+  width: 150px;
 `;
 
 export const container = css`
@@ -49,8 +54,12 @@ export const buttonStyle = css`
 
 export const keyContent = css`
   display: flex;
-  flex-direction: row;
-  gap: 40px;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
 `;
 
 export const productContent = css`
