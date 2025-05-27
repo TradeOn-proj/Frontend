@@ -7,9 +7,9 @@ export { default as Evaluation } from "./evaluateBtn.png";
 export { default as PlusBtn } from "./plusBtn.svg?react";
 export { default as Product } from "./product.png";
 export { default as ProfileImg } from "./profile.png";
-export { default as Logo2 } from "./TradeOnFooter.svg"
-export { default as Search } from "./searchIcon.svg"
-export { default as Delete } from "./deleteBtn.svg"
-export { default as Image } from "./image.svg"
+export { default as Logo2 } from "./TradeOnFooter.svg?react";
+export { default as Search } from "./searchIcon.svg?react";
+export { default as Delete } from "./deleteBtn.svg?react";
+export { default as Image } from "./image.svg?react";
 export { default as SearchIcon } from "./search.svg?react";
 export { default as InputSearchIcon } from "./inputSearch.svg?react";

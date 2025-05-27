@@ -1,4 +1,4 @@
-import {container, logoStyle, contentStyle, infoStyle, labelStyle, linkStyle, copyrightStyle} from "./Footer.style";
+import {container, contentStyle, logoStyle, infoStyle, labelStyle, linkStyle, copyrightStyle} from "./Footer.style";
 import {Logo2} from "@assets/index"
 
 
