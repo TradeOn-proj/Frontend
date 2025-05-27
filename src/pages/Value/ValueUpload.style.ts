@@ -108,6 +108,7 @@ export const keywordList = css`
   gap: 23px;
   flex-wrap: wrap;
   margin-top: 31px;
+  margin-bottom: 54px;
 `;
 
 export const searchbtn = css `

@@ -6,7 +6,7 @@ import { Search, Delete, Image } from "@assets/index";
 import Buttons from "@components/Button/Buttons";
 
 const ValueUpload=() => {
-  const [keywords, setKeywords] = useState<string[]>(['#바람막이', '#바람막이']);
+  const [keywords, setKeywords] = useState<string[]>(['#바람막이', '#마우스']);
   const [keywordInput, setKeywordInput] = useState('');
   
   const handleKeywordAdd = () => {
@@ -61,6 +61,8 @@ const handleCancel = () => {
               </div>
             ))}
           </div>
+          <label css={label}>상품 정가</label>
+         <input css={input2} placeholder="금액을 입력하세요." />
         </div>
         <div css={column}>
             <label css={label}>상품 사진</label>
@@ -70,11 +72,10 @@ const handleCancel = () => {
             <button css={fileBtn}>파일 선택</button>
           </div>
         </div>
-         <label css={label}>상품 정가</label>
-         <input css={input2} placeholder="상품 정가를 입력하세요." />
+     
 
           <label css={label}>상품 설명</label>
-      <textarea css={textarea} placeholder="상품 설명을 입력하세요." />
+      <textarea css={textarea} placeholder="상품 설명을 입력하세요. 상품의 사용 횟수를 작성해주세요." />
       
       <div css={buttonRow}>
         <Buttons text="등록하기" type="filled" onClick={handleSubmit}  />

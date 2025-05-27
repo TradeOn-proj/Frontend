@@ -61,6 +61,8 @@ const handleCancel = () => {
               </div>
             ))}
           </div>
+                   <label css={label}>거래 장소</label>
+         <input css={input2} placeholder="거래 장소를 입력하세요." />
         </div>
         <div css={column}>
             <label css={label}>상품 사진</label>
@@ -70,9 +72,6 @@ const handleCancel = () => {
             <button css={fileBtn}>파일 선택</button>
           </div>
         </div>
-         <label css={label}>거래 장소</label>
-         <input css={input2} placeholder="거래 장소를 입력하세요." />
-
           <label css={label}>상품 설명</label>
       <textarea css={textarea} placeholder="상품 설명을 입력하세요." />
       

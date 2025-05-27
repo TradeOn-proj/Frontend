@@ -3,7 +3,8 @@ const routes = {
   home: "/home",
   value: "/value",
   upload: "/upload",
-  valupload: "/valupload"
+  valueupload: "/valueupload",
+  detail: "/detail"
 } as const;
 
 export default routes;
