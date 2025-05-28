@@ -14,30 +14,34 @@ import SignIn from "@pages/SignIn/SignIn";
 import KeyWordPage from "@pages/KeyWordPage/KeyWordPage";
 import TradeHistory from "@pages/Trade/TradeHistory";
 import Review from "@pages/Review/Review";
+import MyPage from "@pages/MyPage/MyPage";
+import Setting from "@pages/Setting/Setting";
+import Data from "@pages/Data/Data";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-    { path: routes.home, element: <Home /> },
-    { path: routes.value, element: <Value />},
-    { path: routes.upload, element: <Upload />},
-    { path: routes.valueupload, element: <ValueUpload />},
-    { path: routes.detail, element: <Detail />},
-    { path: routes.valuedetail, element: <ValueDetail />},
-    {
+      { path: routes.home, element: <Home /> },
+      { path: routes.value, element: <Value /> },
+      { path: routes.upload, element: <Upload /> },
+      { path: routes.valueupload, element: <ValueUpload /> },
+      { path: routes.detail, element: <Detail /> },
+      { path: routes.valuedetail, element: <ValueDetail /> },
+      {
         path: routes.search,
         element: <Search />,
-    },
-    { path: routes.searchresult, element: <SearchResult /> },
-    { path: routes.login, element: <Login /> },
-    { path: routes.signin, element: <SignIn /> },
-    { path: routes.keyword, element: <KeyWordPage /> },
-    { path: routes.tradehistory, element: <TradeHistory /> },
-    { path: routes.review, element: <Review /> },
-
-
+      },
+      { path: routes.searchresult, element: <SearchResult /> },
+      { path: routes.login, element: <Login /> },
+      { path: routes.signin, element: <SignIn /> },
+      { path: routes.keyword, element: <KeyWordPage /> },
+      { path: routes.tradehistory, element: <TradeHistory /> },
+      { path: routes.review, element: <Review /> },
+      { path: routes.mypage, element: <MyPage /> },
+      { path: routes.setting, element: <Setting /> },
+      { path: routes.data, element: <Data /> },
     ],
   },
 ]);

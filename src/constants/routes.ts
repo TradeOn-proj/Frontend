@@ -13,6 +13,9 @@ const routes = {
   keyword: "/keywordpage",
   tradehistory: "/tradehistory",
   review: "/review",
+  mypage: "/mypage",
+  setting: "/setting",
+  data: "/data",
 } as const;
 
 export default routes;
