@@ -5,6 +5,7 @@ export const container = css`
   height: 279px;
   border: 1px solid #d4d4d4;
   padding: 22px 25px;
+  border-radius: 20px;
 `;
 
 export const content = css`
@@ -52,4 +53,16 @@ export const keyWordContainer = css`
   display: flex;
   flex-direction: row;
   gap: 26px;
+`;
+
+export const dropdownWrapper = css`
+  position: absolute;
+  right: 120px;
+  z-index: 10;
+`;
+
+export const vectorWrapper = css`
+  position: relative;
+  display: inline-block;
+  right: 0;
 `;
