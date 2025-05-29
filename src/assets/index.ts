@@ -13,3 +13,8 @@ export { default as Delete } from "./deleteBtn.svg?react";
 export { default as Image } from "./image.svg?react";
 export { default as SearchIcon } from "./search.svg?react";
 export { default as InputSearchIcon } from "./inputSearch.svg?react";
+export { default as Fire } from "./fire.svg?react";
+export { default as Info } from "./info.svg";
+export { default as SettingIcon } from "./setting.svg?react";
+export { default as Left } from "./left.svg?react";
+export { default as Vector } from "./vector.svg?react";

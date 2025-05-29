@@ -2,7 +2,8 @@ import { css } from "@emotion/react";
 
 export const mainContainer = css`
   width: 1024px;
-  padding-top: 180px;
+  padding-top: 300px;
+  padding-bottom: 400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
