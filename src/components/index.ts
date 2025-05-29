@@ -10,6 +10,10 @@ import LoginButton from "./Button/LoginButton/LoginButton";
 import TradeCard from "./Card/TradeCard";
 import TemperatureBar from "./TemperatureBar/TemperactureBar";
 import TradingCard from "./Card/TradingCard";
+import DataCard from "./Card/DataCard";
+import BarChart from "./Chart/BarChart";
+import PieChart from "./Chart/PieChart";
+import LineChart from "./Chart/LineChart";
 export {
   Header,
   KeyWord,
@@ -23,4 +27,8 @@ export {
   TradeCard,
   TemperatureBar,
   TradingCard,
+  DataCard,
+  BarChart,
+  PieChart,
+  LineChart,
 };
