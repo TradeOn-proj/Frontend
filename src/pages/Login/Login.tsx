@@ -27,8 +27,11 @@ const Login: React.FC = () => {
       { username: id, password },
       {
         onSuccess: (res) => {
-          alert("로그인 성공");
           localStorage.setItem("accessToken", res.access_token);
+          localStorage.setItem("userId", String(res.user.id));
+
+          window.dispatchEvent(new Event("storage"));
+
           navigate("/");
         },
         onError: (error: unknown) => {

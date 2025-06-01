@@ -6,7 +6,12 @@ interface ProfileDropdownProps {
 }
 const HeaderDropdown: React.FC<ProfileDropdownProps> = ({ onClose }) => {
   const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
+
     onClose();
+
+    window.location.href = routes.main;
   };
 
   return (

@@ -10,7 +10,7 @@ export const container = css`
 export const titleContainer = css`
   display: flex;
   align-items: center;
-  width: 80px;
+  width: 110px;
 `;
 export const titleStyle = css`
   color: #3e83e9;
@@ -18,13 +18,13 @@ export const titleStyle = css`
   font-weight: 600;
 `;
 export const valueContainer = css`
-  width: 76px;
+  width: 110px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 export const valueStyle = css`
-  width: 60px;
+  width: 110px;
   font-size: 22px;
   font-weight: 600;
   color: #3e83e9;
