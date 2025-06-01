@@ -1,28 +1,53 @@
-import {container, title, line, label, input, row, column, keywordInputWrapper, keywordInputStyle, keywordList, keywordBox, searchbtn, deletebtn
+import {container, titleStyle
+  , line, label, input, row, column, keywordInputWrapper, keywordInputStyle, keywordList, keywordBox, searchbtn, deletebtn
     ,imageBox, image, textarea, input2, fileBtn, buttonRow
 } from "./ValueUpload.style"
 import { useState } from 'react';
 import { Search, Delete, Image } from "@assets/index";
 import Buttons from "@components/Button/Buttons";
+import usePostValuation from "apis/hooks/value/usePostValuation";
+import { useNavigate } from "react-router-dom";
 
 const ValueUpload=() => {
-  const [keywords, setKeywords] = useState<string[]>(['#바람막이', '#마우스']);
-  const [keywordInput, setKeywordInput] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState<string[]>(['#바람막이', '#마우스']);
+  const [categoryInput, setCategoryInput] = useState("");
+   const navigate = useNavigate();
   
-  const handleKeywordAdd = () => {
-    if (keywordInput.trim() && !keywords.includes(`#${keywordInput}`)) {
-      setKeywords([...keywords, `#${keywordInput}`]);
-      setKeywordInput('');
+   const handleCategoryAdd = () => {
+    if (categoryInput.trim() && !category.includes(`#${categoryInput}`)) {
+      setCategory([...category, `#${categoryInput}`]);
+      setCategoryInput('');
     }
   };
 
-  const handleKeywordRemove = (keyword: string) => {
-    setKeywords(keywords.filter(k => k !== keyword));
+  const handleCategoryRemove = (item: string) => {
+    setCategory(category.filter(c => c !== item));
   };
 
-  const handleSubmit = () => {
-   console.log("상품 등록 시도");
-};
+ const handleSubmit = async () => {
+    const selectedCategory = category[0]?.replace("#", "") || "";
+
+    if (!title || !description || !selectedCategory) {
+      alert("모든 항목을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const res = await usePostValuation({
+        title,
+        description,
+        category: selectedCategory
+      });
+      alert("게시글이 성공적으로 등록되었습니다.");
+      console.log("등록된 postId:", res.postId);
+       navigate(`/value`);
+    } catch (err) {
+      console.error("등록 실패", err);
+      alert("게시글 등록에 실패했습니다.");
+    }
+  };
 
 const handleCancel = () => {
   console.log("취소 버튼 클릭됨");
@@ -30,39 +55,45 @@ const handleCancel = () => {
 
   return(
      <div css={container}>
-        <div css={title}>상품 등록</div>
+        <div css={titleStyle}
+        >상품 등록</div>
         <div css={line} />
         <label css={label}>상품</label>
-        <input css={input} placeholder="상품 이름을 입력하세요." />
+         <input
+        css={input}
+        placeholder="상품 이름을 입력하세요."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
      <div css={row}>
         <div css={column}>
             <label css={label}>키워드</label>
             <div css={keywordInputWrapper}>
-            <input
+             <input
               css={keywordInputStyle}
-              placeholder="키워드를 추가하세요. 예) #의류 #바람막이"
-              value={keywordInput}
-              onChange={(e) => setKeywordInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleKeywordAdd()}>
-                
-              </input>
-            <button onClick={handleKeywordAdd}>
+              placeholder="카테고리를 추가하세요. 예) #전자기기"
+              value={categoryInput}
+              onChange={(e) => setCategoryInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleCategoryAdd()}
+            />
+            <button onClick={handleCategoryAdd}>
                 <Search css={searchbtn} />
             </button>
           </div>
 
           <div css={keywordList}>
-            {keywords.map((k, i) => (
+            {category.map((c, i) => (
               <div key={i} css={keywordBox}>
-                {k}
-                <button onClick={() => handleKeywordRemove(k)}>
+                {c}
+                <button onClick={() => handleCategoryRemove(c)}>
                     <Delete css={deletebtn} />
                 </button>
               </div>
             ))}
           </div>
-          <label css={label}>상품 정가</label>
-         <input css={input2} placeholder="금액을 입력하세요." />
+          {/* <label css={label}>상품 정가</label>
+         <input css={input2} placeholder="금액을 입력하세요." /> */}
         </div>
         <div css={column}>
             <label css={label}>상품 사진</label>
@@ -75,7 +106,12 @@ const handleCancel = () => {
      
 
           <label css={label}>상품 설명</label>
-      <textarea css={textarea} placeholder="상품 설명을 입력하세요. 상품의 사용 횟수를 작성해주세요." />
+       <textarea
+        css={textarea}
+        placeholder="상품 설명을 입력하세요. 상품의 사용 횟수를 작성해주세요."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
       
       <div css={buttonRow}>
         <Buttons text="등록하기" type="filled" onClick={handleSubmit}  />
