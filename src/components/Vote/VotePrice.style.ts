@@ -37,10 +37,10 @@ export const slider = (percent: number) => css`
   }
 `;
 
-export const bubble = (percent: number) => css`
+export const bubble = () => css`
   position: absolute;
   top: 40px;
-  left: ${percent}%;
+  left: 50%;
   transform: translateX(-50%);
   background: #3e83e9;
   color: white;

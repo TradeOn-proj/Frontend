@@ -8,7 +8,8 @@ const tokenInstance = axios.create({
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true",
+     "ngrok-skip-browser-warning": "true",
+
   },
 });
 
@@ -24,7 +25,6 @@ tokenInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
 tokenInstance.interceptors.response.use(
   (response) => response,
   async (error) => {

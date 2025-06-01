@@ -8,7 +8,7 @@ export const container = css`
   margin: 0 auto;
 
 `
-export const title = css`
+export const titleStyle= css`
   color: #3C3636;
   font-family: Pretendard;
   font-size: 32px;

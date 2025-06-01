@@ -36,16 +36,16 @@ export const title = css`
   font-family: Pretendard;
   font-size: 25px;
   font-weight: 800;
-  width: 210px;
+  width: 300px;
 `
 
 export const date = css`
-  margin-left: 354px;
+  margin-left: 230px;
   color: #676767;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 800;
-  width: 108px;
+  width: 200px;
 `
 export const infoContainer = css`
   display: flex;
@@ -58,6 +58,7 @@ export const tag = css`
   font-weight: 800;
   margin-top: 18px;
   width: 210px;
+  height: 24px;
 `
 
 export const people = css`
@@ -70,7 +71,7 @@ export const people = css`
 `
 
 export const price = css`
-  width: 117px;
+  width: 200
   color: #444;
   font-family: Pretendard;
   font-size: 25px;

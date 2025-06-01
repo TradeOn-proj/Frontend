@@ -47,7 +47,7 @@ const Home: React.FC = () => {
           <img src={Group} alt="공동 구매" css={iconStyle} />
           공동 구매
         </div>
-        <div css={buttonEach}>
+        <div css={buttonEach} onClick={()=> navigate ("/value")}>
           <img src={Evaluation} alt="가치 평가" css={iconStyle} />
           가치 평가
         </div>

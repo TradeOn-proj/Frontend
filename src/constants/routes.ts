@@ -5,7 +5,7 @@ const routes = {
   upload: "/upload",
   valueupload: "/valueupload",
   detail: "/detail",
-  valuedetail: "/valuedetail",
+  valuedetail: "/valuedetail/:postId",
   search: "/search",
   searchresult: "/search-result",
   login: "/login",

@@ -23,7 +23,7 @@ export const title=css`
   font-size: 24px;
   font-weight: 800;
   margin-left: 18px;
-
+  width: 500px;
 `
 
 export const date = css`
@@ -31,7 +31,7 @@ export const date = css`
   font-family: Pretendard;
   font-size: 15px;
   font-weight: 600;
-  margin-left: 747px;
+  margin-left: 300px;
 
 `
 
@@ -41,8 +41,8 @@ export const row = css`
 `
 
 export const image = css`
-  width : 371px;
-  height: 371px;
+  width : 250px;
+  height: 250px;
   margin-top: 60px;
 `
 
@@ -69,7 +69,15 @@ export const productName=css`
 export const keywordlist = css`
   margin-top: 18px;
 `
-
+export const productPrice=css`
+color: #444;
+font-family: Pretendard;
+font-size: 25px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+margin-top: 40px;
+`
 export const keyword = css`
   color: #676767;
   font-family: Pretendard;
