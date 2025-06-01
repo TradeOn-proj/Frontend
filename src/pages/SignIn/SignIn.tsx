@@ -5,17 +5,41 @@ import {
   titleContainer,
 } from "./SignIn.style";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import usePostRegister from "apis/hooks/user/usePostRegister";
+import axios from "axios";
 
 const SignIn: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const { mutate: register } = usePostRegister();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 로그인 API
+    register(
+      { username: name, email, password },
+      {
+        onSuccess: () => {
+          alert("회원가입 완료");
+          navigate("/login");
+        },
+        onError: (error: unknown) => {
+          if (axios.isAxiosError(error)) {
+            const msg =
+              error.response?.data?.msg ?? "회원가입 중 오류가 발생했습니다.";
+            alert(msg);
+          } else {
+            alert("알 수 없는 오류가 발생했습니다.");
+          }
+        },
+      }
+    );
   };
+
   return (
     <div css={mainContainer}>
       <div css={titleContainer}>회원가입</div>
@@ -38,8 +62,8 @@ const SignIn: React.FC = () => {
           onChange={setPassword}
           placeholder="비밀번호"
         />
+        <LoginButton mode={"login"} children={"회원가입 하기"} type="submit" />
       </form>
-      <LoginButton mode={"login"} children={"다음"} />
     </div>
   );
 };
