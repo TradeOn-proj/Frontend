@@ -19,6 +19,8 @@ const SignIn: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const userId = Number(localStorage.getItem("userId"));
+    console.log("✅ MyPage에서 불러온 userId:", userId);
 
     register(
       { username: name, email, password },

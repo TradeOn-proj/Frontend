@@ -1,9 +1,10 @@
-import { apiPost } from "./apiUtils";
+import { apiPost, authApiGet } from "./apiUtils";
 import type {
   loginResponse,
   postLoginParams,
   postRegisterParams,
   registerResponse,
+  userProfileApiResponse,
 } from "./types/user";
 
 export const postRegister = async (data: postRegisterParams) => {
@@ -15,4 +16,12 @@ export const postRegister = async (data: postRegisterParams) => {
 
 export const postLogin = async (data: postLoginParams) => {
   return apiPost<loginResponse, postLoginParams>("/api/v1/users/login", data);
+};
+
+export const getUserProfile = async (userId: number) => {
+  const res = await authApiGet<userProfileApiResponse, undefined>(
+    `/api/v1/users/${userId}/profile`,
+    undefined
+  );
+  return res.user;
 };

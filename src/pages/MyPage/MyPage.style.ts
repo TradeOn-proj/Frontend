@@ -105,3 +105,11 @@ export const tradingContainer = css`
   flex-direction: column;
   gap: 35px;
 `;
+
+export const smalltitleStyle = css`
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+`;

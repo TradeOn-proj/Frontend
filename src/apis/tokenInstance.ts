@@ -7,6 +7,8 @@ const tokenInstance = axios.create({
   baseURL,
   headers: {
     Accept: "*/*",
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true",
   },
 });
 
