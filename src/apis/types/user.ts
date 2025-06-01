@@ -18,3 +18,8 @@ export interface loginResponse {
   access_token: string;
   user: User;
 }
+
+export interface postLoginParams {
+  username: string;
+  password: string;
+}
