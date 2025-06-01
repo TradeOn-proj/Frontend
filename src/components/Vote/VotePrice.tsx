@@ -17,7 +17,9 @@ const VotePrice = () => {
  const [price, setPrice] = useState(50000);
   const { postId } = useParams<{ postId: string }>();
   const { mutate } = usePostValuationPrice();
-
+  const min = 0;
+  const max = 1000000;
+  const percent = Math.min(100, Math.max(0, ((price - min) / (max - min)) * 100));
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(Number(e.target.value));
   };
@@ -46,14 +48,14 @@ const VotePrice = () => {
         <div css={dotLeft} />
         <input
           type="range"
-          min={0}
-          max={1000000}
+          min={min}
+          max={max}
           step={10000}
           value={price}
           onChange={handleChange}
-          css={slider(((price - 0) / 100000) * 100)}
+          css={slider(percent)}
         />
-            <div css={bubble(((price - 0) / 100000) * 100)}>
+            <div css={bubble()}>
           {price.toLocaleString()}원
         </div>
         <div css={dotRight} />
