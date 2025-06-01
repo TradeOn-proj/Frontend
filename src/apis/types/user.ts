@@ -18,3 +18,25 @@ export interface loginResponse {
   access_token: string;
   user: User;
 }
+
+export interface postLoginParams {
+  username: string;
+  password: string;
+}
+
+export interface userProfileResponse {
+  id: number;
+  username: string;
+  email: string;
+  current_points: number;
+  cancellation_count: number;
+  cancellation_warning: boolean;
+  current_grade: string;
+  grade_icon_url: string;
+  registeredAt: string;
+  total_trades: number;
+}
+
+export interface userProfileApiResponse {
+  user: userProfileResponse;
+}

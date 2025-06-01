@@ -10,12 +10,14 @@ import {
   profileContent,
   selectBox,
   selectContainer,
+  smalltitleStyle,
   textStyle,
   titleStyle,
   tradingContainer,
 } from "./MyPage.style";
-import { TemperatureBar, TradingCard } from "@components/index";
+import { DataButton, TemperatureBar, TradingCard } from "@components/index";
 import { useNavigate } from "react-router-dom";
+import useUserProfile from "apis/hooks/user/userUserProfile";
 
 const MyPage: React.FC = () => {
   const navigate = useNavigate();
@@ -23,17 +25,31 @@ const MyPage: React.FC = () => {
   const handleSetting = () => {
     navigate(`/setting`);
   };
+
+  const userId = Number(localStorage.getItem("userId"));
+
+  const { data: profile, isLoading, error } = useUserProfile(userId);
+
+  if (!userId || isNaN(userId)) {
+    return <div>로그인 정보가 없습니다.</div>;
+  }
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error || !profile) return <div>프로필 정보를 불러오지 못했습니다.</div>;
   return (
     <div css={mainContainer}>
       <div css={profileContainer}>
         <img src={ProfileImg} css={imageStyle} />
         <div css={profileContent}>
           <div css={titleStyle}>
-            <p>이구역거래왕</p>
-            <SettingIcon css={iconStyle} onClick={handleSetting} />
+            <p>{profile.username}</p>
+            <div css={smalltitleStyle}>
+              <DataButton />
+              <SettingIcon css={iconStyle} onClick={handleSetting} />
+            </div>
           </div>
-          <p css={textStyle}>우리 거래해요~</p>
-          <TemperatureBar temperature={30} />
+          <p css={textStyle}>{profile.email}</p>
+          <TemperatureBar points={profile.current_points} />
         </div>
       </div>
       <div css={selectContainer}>
@@ -41,17 +57,18 @@ const MyPage: React.FC = () => {
           보유포인트
           <div css={content}>
             <Left css={leftStyle} />
-            1,200
+            {profile.current_points}
           </div>
         </div>
         <div css={selectBox}>
           거래내역
           <div css={content}>
-            <Left css={leftStyle} />5
+            <Left css={leftStyle} />
+            {profile.total_trades}
           </div>
         </div>
         <div css={selectBox}>
-          거래 데이터 분석
+          리뷰
           <div css={content}>
             <Left css={leftStyle} />
             new

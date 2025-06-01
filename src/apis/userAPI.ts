@@ -1,8 +1,15 @@
 import { apiPost, authApiGet, authApiPost } from "./apiUtils";
-import type { postRegisterParams, registerResponse } from "./types/user";
 import type {ValuationListParams, ValuationListResponse } from "./types/value";
 import type {ValuationDetailResponse} from "./types/valuedetail";
 import type { ValuationCreateRequest } from "./types/valueupload";
+import type {
+  loginResponse,
+  postLoginParams,
+  postRegisterParams,
+  registerResponse,
+  userProfileApiResponse,
+} from "./types/user";
+
 export const postRegister = async (data: postRegisterParams) => {
   return apiPost<registerResponse, postRegisterParams>(
     "/api/v1/users/register",
@@ -39,5 +46,17 @@ export const postValuation = async (data: ValuationCreateRequest) => {
     ValuationCreateRequest, // 바디 타입
     void // 파라미터 없음
   >("/api/v1/valuations", data);
+};
+
+export const postLogin = async (data: postLoginParams) => {
+  return apiPost<loginResponse, postLoginParams>("/api/v1/users/login", data);
+};
+
+export const getUserProfile = async (userId: number) => {
+  const res = await authApiGet<userProfileApiResponse, undefined>(
+    `/api/v1/users/${userId}/profile`,
+    undefined
+  );
+  return res.user;
 };
 

@@ -14,6 +14,8 @@ import DataCard from "./Card/DataCard";
 import BarChart from "./Chart/BarChart";
 import PieChart from "./Chart/PieChart";
 import LineChart from "./Chart/LineChart";
+import HeaderButton from "./Button/HeaderButton/HeaderButton";
+import DataButton from "./Button/DataButton/DataButton";
 export {
   Header,
   KeyWord,
@@ -31,4 +33,6 @@ export {
   BarChart,
   PieChart,
   LineChart,
+  HeaderButton,
+  DataButton,
 };
