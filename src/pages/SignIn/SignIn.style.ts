@@ -3,6 +3,8 @@ import { css } from "@emotion/react";
 export const mainContainer = css`
   width: 1024px;
   padding-top: 180px;
+  padding-bottom: 100px;
+
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -18,7 +20,6 @@ export const titleContainer = css`
   color: #3c3636;
   font-size: 40px;
   font-weight: 800;
-  /* border-bottom: solid 1px #d4d4d4; */
   gap: 10px;
   padding-bottom: 30px;
 `;
