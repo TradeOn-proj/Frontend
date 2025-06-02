@@ -18,6 +18,8 @@ import MyPage from "@pages/MyPage/MyPage";
 import Setting from "@pages/Setting/Setting";
 import Data from "@pages/Data/Data";
 import ChatPage from "@pages/Chat/ChatPage"
+import OthersPage from "@pages/OthersPage/OthersPage";
+import ListProduct from "@pages/ListProduct/ListProduct";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,8 @@ const router = createBrowserRouter([
       { path: routes.setting, element: <Setting /> },
       { path: routes.data, element: <Data /> },
       { path: routes.chat, element: <ChatPage /> },
-
+      { path: `${routes.otherspage}/:userId`, element: <OthersPage /> },
+      { path: routes.listproduct, element: <ListProduct /> },
     ],
   },
 ]);

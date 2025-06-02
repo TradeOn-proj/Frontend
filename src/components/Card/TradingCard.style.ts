@@ -52,7 +52,15 @@ export const information = css`
 export const keyWordContainer = css`
   display: flex;
   flex-direction: row;
-  gap: 26px;
+  gap: 16px;
+  max-width: 672px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const dropdownWrapper = css`

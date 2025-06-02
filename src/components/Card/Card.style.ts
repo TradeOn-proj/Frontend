@@ -2,11 +2,10 @@ import { css } from "@emotion/react";
 
 export const container = css`
   width: 323px;
-  height: 456px;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 17px 26px 86px 26px;
+  padding: 17px 26px 40px 26px;
 `;
 
 export const imageStyle = css`
@@ -18,6 +17,7 @@ export const imageStyle = css`
 `;
 
 export const textContainer = css`
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 6x;
@@ -25,8 +25,8 @@ export const textContainer = css`
 
 export const titleStyle = css`
   color: #3c3636;
-  font-size: 25px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 700;
 `;
 
 export const contentStyle = css`

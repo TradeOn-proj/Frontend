@@ -41,4 +41,5 @@ export const buttonStyle = css`
 export const iconStyle = css`
   width: 39px;
   height: 39px;
+  color: #3e83e9;
 `;

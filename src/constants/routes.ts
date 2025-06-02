@@ -17,6 +17,8 @@ const routes = {
   setting: "/setting",
   data: "/data",
   chat: "/chat",
+  otherspage: "/otherspage",
+  listproduct: "/listproduct",
 } as const;
 
 export default routes;

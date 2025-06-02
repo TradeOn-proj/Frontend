@@ -78,11 +78,9 @@ const MyPage: React.FC = () => {
       <div css={container}>
         <p>진행중인 거래</p>
         <div css={tradingContainer}>
-          <TradingCard />
-          <TradingCard />
-          <TradingCard />
-          <TradingCard />
-          <TradingCard />
+          {profile.ongoing_trades.map((trade) => (
+            <TradingCard key={trade.trade_id} trade={trade} />
+          ))}
         </div>
       </div>
     </div>
