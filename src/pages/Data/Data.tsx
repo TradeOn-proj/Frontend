@@ -1,3 +1,4 @@
+import useGetUserAnalytics from "apis/hooks/analytics/useGetUserAnalytics";
 import { BarChart, DataCard, LineChart, PieChart } from "@components/index";
 import {
   chartContainer,
@@ -11,69 +12,63 @@ import {
 } from "./Data.style";
 
 const Data: React.FC = () => {
-  const dummyData = [
-    { month: "1월", trade: 12 },
-    { month: "2월", trade: 19 },
-    { month: "3월", trade: 23 },
-    { month: "4월", trade: 18 },
-    { month: "5월", trade: 20 },
-    { month: "6월", trade: 15 },
-    { month: "7월", trade: 30 },
-    { month: "8월", trade: 25 },
-    { month: "9월", trade: 28 },
-    { month: "10월", trade: 22 },
-    { month: "11월", trade: 26 },
-    { month: "12월", trade: 33 },
+  const userId = Number(localStorage.getItem("userId"));
+
+  const { data, isLoading, error } = useGetUserAnalytics(userId);
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error || !data) return <div>에러가 발생했습니다.</div>;
+
+  const barData = data.monthlyTradeCounts.map((item) => ({
+    month: `${parseInt(item.month.split("-")[1])}월`,
+    trade: item.count,
+  }));
+
+  const pieData = [
+    { id: "거래완료", value: data.successRate },
+    { id: "대기중", value: 100 - data.successRate },
   ];
 
-  const piedata = [
-    { id: "거래완료", value: 70 },
-    { id: "대기중 ", value: 30 },
-  ];
+  const validLinePoints = data.monthlyAverageRatings
+    .filter(
+      (item) => item.month?.includes("-") && !isNaN(Number(item.averageRating))
+    )
+    .map((item) => {
+      const parts = item.month.split("-");
+      const monthNum = parts[1] ? parseInt(parts[1]) : NaN;
+      return {
+        x: !isNaN(monthNum) ? `${monthNum}월` : "기타",
+        y: Number(item.averageRating),
+      };
+    });
 
-  const ratingData = [
-    {
-      id: "평점",
-      data: [
-        { x: "1월", y: 3.5 },
-        { x: "2월", y: 4.0 },
-        { x: "3월", y: 4.5 },
-        { x: "4월", y: 4.0 },
-        { x: "5월", y: 4.2 },
-        { x: "6월", y: 3.9 },
-        { x: "7월", y: 4.8 },
-        { x: "8월", y: 4.5 },
-        { x: "9월", y: 4.3 },
-        { x: "10월", y: 3.8 },
-        { x: "11월", y: 4.0 },
-        { x: "12월", y: 4.6 },
-      ],
-    },
-  ];
+  const lineData = validLinePoints.length
+    ? [{ id: "평점", data: validLinePoints }]
+    : [];
 
   return (
     <div css={mainContainer}>
       <p css={titleStyle}>거래 데이터 분석</p>
       <div css={container}>
-        <DataCard />
-        <DataCard />
-        <DataCard />
+        <DataCard title="총 거래 수" value={data.totalTrades} />
+        <DataCard title="성공 거래 수" value={data.successfulTrades} />
+        <DataCard title="평균 평점" value={data.averageRating.toFixed(1)} />
       </div>
       <div css={dataContainer}>
         <p>월별 거래 횟수</p>
         <div css={chartContainer}>
           <div css={barBox}>
-            <BarChart data={dummyData} css={barBox} />
+            <BarChart data={barData} />
           </div>
           <div css={pieBox}>
-            <PieChart data={piedata} />
+            <PieChart data={pieData} />
           </div>
         </div>
       </div>
       <div css={dataContainer}>
         평점 변화
         <div css={lineBox}>
-          <LineChart data={ratingData} />
+          <LineChart data={lineData} />
         </div>
       </div>
     </div>

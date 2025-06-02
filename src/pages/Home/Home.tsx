@@ -11,24 +11,40 @@ import {
 } from "./Home.style";
 import { Card, KeyWord } from "@components/index";
 import { useNavigate } from "react-router-dom";
+import useGetUserCategories from "apis/hooks/user/useGetCategories";
+import { useEffect } from "react";
+import useGetRecommendPosts from "apis/hooks/post/useGetRecommend";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const userId = Number(localStorage.getItem("userId"));
+  const isLoggedIn = !!userId && !isNaN(userId);
 
-  const products = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-  ];
+  const {
+    data: categories,
+    isLoading,
+    error,
+    refetch,
+  } = useGetUserCategories(userId);
+
+  const {
+    data: recommendedPosts,
+    isLoading: isPostsLoading,
+    error: postsError,
+  } = useGetRecommendPosts();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      refetch();
+    }
+  }, [isLoggedIn]);
 
   const handleKeyWord = () => {
     navigate(`/keywordpage`);
+  };
+
+  const handleListProduct = () => {
+    navigate(`/listproduct`);
   };
 
   return (
@@ -44,10 +60,15 @@ const Home: React.FC = () => {
           채팅
         </div>
         <div css={buttonEach}>
-          <img src={Group} alt="공동 구매" css={iconStyle} />
-          공동 구매
+          <img
+            src={Group}
+            alt="공동 구매"
+            css={iconStyle}
+            onClick={handleListProduct}
+          />
+          상품 전체보기
         </div>
-        <div css={buttonEach} onClick={()=> navigate ("/value")}>
+        <div css={buttonEach} onClick={() => navigate("/value")}>
           <img src={Evaluation} alt="가치 평가" css={iconStyle} />
           가치 평가
         </div>
@@ -58,34 +79,45 @@ const Home: React.FC = () => {
           <PlusBtn onClick={handleKeyWord} />
         </div>
         <div css={keyContent}>
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
-          <KeyWord text={"바람막이 "} />
-          <KeyWord text={"운동화 "} />
-          <KeyWord text={"가방"} />
+          {!isLoggedIn ? (
+            <p>로그인을 해주세요.</p>
+          ) : isLoading ? (
+            <p>키워드를 불러오는 중입니다...</p>
+          ) : error ? (
+            <p>키워드 정보를 가져오지 못했습니다.</p>
+          ) : categories && categories.length > 0 ? (
+            categories.map((keyword) => (
+              <KeyWord key={keyword} text={keyword} />
+            ))
+          ) : (
+            <p>등록된 키워드가 없습니다.</p>
+          )}
         </div>
       </div>
       <div css={container}>
-        <div css={title}>
-          오늘의 상품 추천 <PlusBtn />
-        </div>
+        <div css={title}>오늘의 상품 추천</div>
         <div css={productContent}>
-          {products.map((product) => (
-            <Card key={product.id} />
-          ))}
+          {!isLoggedIn ? (
+            <p>로그인을 해주세요.</p>
+          ) : isPostsLoading ? (
+            <p>추천 상품을 불러오는 중입니다...</p>
+          ) : postsError ? (
+            <p>추천 상품을 가져오지 못했습니다.</p>
+          ) : recommendedPosts && recommendedPosts.length > 0 ? (
+            recommendedPosts.map((post) => (
+              <Card
+                key={post.id}
+                post={{
+                  id: post.id,
+                  title: post.title,
+                  category: post.category,
+                  thumbnail_image_url: post.thumbnail_image_url,
+                }}
+              />
+            ))
+          ) : (
+            <p>추천된 상품이 없습니다.</p>
+          )}
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import {
   textContainer,
 } from "./SearchResult.style";
 import { Card, SearchInput } from "@components/index";
+import useGetSearch from "apis/hooks/search/useGetSearch";
 
 const SearchResult: React.FC = () => {
   const location = useLocation();
@@ -16,28 +17,20 @@ const SearchResult: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const updatedQuery = queryParams.get("query") || "";
+    const updatedQuery =
+      new URLSearchParams(location.search).get("query") || "";
     setQuery(updatedQuery);
   }, [location]);
 
   const handleSearch = () => {
     if (query) {
-      navigate(`/search-result?query=${query}`);
+      navigate(`/search-result?query=${encodeURIComponent(query)}`);
     }
   };
 
-  const products = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-  ];
+  const { data, isLoading, error } = useGetSearch(query || initialQuery);
+
+  const posts = data?.posts || [];
 
   return (
     <div css={mainContainer}>
@@ -48,14 +41,20 @@ const SearchResult: React.FC = () => {
         placeholder={"무엇이든 검색해 보세요"}
       />
       <div css={textContainer}>
-        <span css={pointStyle}>‘아이더 바람막이 자켓'</span>에 대한 총
-        <span css={pointStyle}>9</span>
+        <span css={pointStyle}>‘{query}’</span>에 대한 총
+        <span css={pointStyle}>{data?.count || 0}</span>
         개의 피드와 팟 검색 결과가 발견되었어요.
       </div>
       <div css={productContent}>
-        {products.map((product) => (
-          <Card key={product.id} />
-        ))}
+        {isLoading ? (
+          <div>로딩 중...</div>
+        ) : error ? (
+          <div>에러가 발생했습니다.</div>
+        ) : posts.length > 0 ? (
+          posts.map((post) => <Card key={post.id} post={post} />)
+        ) : (
+          <div>검색 결과가 없습니다.</div>
+        )}
       </div>
     </div>
   );

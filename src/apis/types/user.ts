@@ -35,8 +35,41 @@ export interface userProfileResponse {
   grade_icon_url: string;
   registeredAt: string;
   total_trades: number;
+  ongoing_trades: userProfileTrade;
+}
+
+export interface userProfileTrade {
+  trade_id: number;
+  title: string;
+  status: string;
+  thumbnail_image_url: string;
 }
 
 export interface userProfileApiResponse {
   user: userProfileResponse;
+}
+
+export interface patchCategoriesRequest {
+  categories: string[];
+}
+
+export interface getCategoriesResponse {
+  msg: string;
+  categories: (string | null)[];
+}
+
+export interface patchUserProfileRequest {
+  username?: string;
+  email?: string;
+  profile_image_url?: string;
+}
+
+export interface patchUserProfileResponse {
+  msg: string;
+  user: {
+    id: number;
+    username: string;
+    email: string;
+    profile_image_url: string;
+  };
 }

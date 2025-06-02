@@ -1,10 +1,15 @@
 import { container, titleStyle } from "./DataCard.style";
 
-const DataCard: React.FC = () => {
+interface DataCardProps {
+  title: string;
+  value: string | number;
+}
+
+const DataCard: React.FC<DataCardProps> = ({ title, value }) => {
   return (
     <div css={container}>
-      <p css={titleStyle}>총 거래 수</p>
-      12건
+      <p css={titleStyle}>{title}</p>
+      {value}
     </div>
   );
 };
