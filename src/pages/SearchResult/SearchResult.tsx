@@ -6,7 +6,7 @@ import {
   productContent,
   textContainer,
 } from "./SearchResult.style";
-import { Card, SearchInput } from "@components/index";
+import { Card, LoadingSpinner, SearchInput } from "@components/index";
 import useGetSearch from "apis/hooks/search/useGetSearch";
 
 const SearchResult: React.FC = () => {
@@ -47,7 +47,7 @@ const SearchResult: React.FC = () => {
       </div>
       <div css={productContent}>
         {isLoading ? (
-          <div>로딩 중...</div>
+          <LoadingSpinner />
         ) : error ? (
           <div>에러가 발생했습니다.</div>
         ) : posts.length > 0 ? (

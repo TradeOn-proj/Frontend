@@ -16,6 +16,7 @@ import PieChart from "./Chart/PieChart";
 import LineChart from "./Chart/LineChart";
 import HeaderButton from "./Button/HeaderButton/HeaderButton";
 import DataButton from "./Button/DataButton/DataButton";
+import LoadingSpinner from "./LoadingSpin/LoadingSpin";
 export {
   Header,
   KeyWord,
@@ -35,4 +36,5 @@ export {
   LineChart,
   HeaderButton,
   DataButton,
+  LoadingSpinner,
 };

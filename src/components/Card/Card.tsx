@@ -6,6 +6,7 @@ import {
   textContainer,
   titleStyle,
 } from "./Card.style";
+import { Product } from "@assets/index";
 
 interface CardProps {
   post: {
@@ -26,7 +27,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
   if (!post) return null;
   return (
     <div css={container} onClick={handlePost}>
-      <img src={post.thumbnail_image_url} css={imageStyle} />
+      <img src={post.thumbnail_image_url || Product} css={imageStyle} />
       <div css={textContainer}>
         <div css={titleStyle}>{post.title}</div>
         <div css={contentStyle}>#{post.category}</div>

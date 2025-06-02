@@ -35,7 +35,7 @@ export interface userProfileResponse {
   grade_icon_url: string;
   registeredAt: string;
   total_trades: number;
-  ongoing_trades: userProfileTrade;
+  ongoing_trades: userProfileTrade[];
 }
 
 export interface userProfileTrade {
@@ -43,6 +43,8 @@ export interface userProfileTrade {
   title: string;
   status: string;
   thumbnail_image_url: string;
+  category: string;
+  usercategories: string[];
 }
 
 export interface userProfileApiResponse {

@@ -13,8 +13,13 @@ import {
 import KeyWord from "@components/Badge/KeyWord/KeyWord";
 import { useEffect, useRef, useState } from "react";
 import DropDown from "@components/DropDown/DropDown";
+import type { userProfileTrade } from "apis/types/user";
 
-const TradingCard: React.FC = () => {
+interface TradingCardProps {
+  trade: userProfileTrade;
+}
+
+const TradingCard: React.FC<TradingCardProps> = ({ trade }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -49,11 +54,11 @@ const TradingCard: React.FC = () => {
   return (
     <div css={container}>
       <div css={content}>
-        <img src={Product} css={imageStyle} />
+        <img src={trade.thumbnail_image_url || Product} css={imageStyle} />
         <div css={information}>
           <div css={titleContainer}>
             <div css={title}>
-              아이더 바람막이 자켓
+              {trade.title}
               <div onClick={handleToggleDropdown} ref={dropdownRef}>
                 <Vector />
               </div>
@@ -63,11 +68,12 @@ const TradingCard: React.FC = () => {
                 </div>
               )}
             </div>
-            <p css={subTitle}>#남성의류 #바람막이</p>
+            <p css={subTitle}>#{trade.category}</p>
           </div>
           <div css={keyWordContainer}>
-            <KeyWord text={"#바람막이"} />
-            <KeyWord text={"#바람막이"} />
+            {trade.usercategories.slice(0, 3).map((keyword, index) => (
+              <KeyWord key={index} text={`#${keyword}`} />
+            ))}
           </div>
         </div>
       </div>
