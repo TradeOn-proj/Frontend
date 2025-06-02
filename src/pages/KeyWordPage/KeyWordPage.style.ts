@@ -44,3 +44,31 @@ export const textContainer = css`
   gap: 20px;
   color: #393940;
 `;
+
+export const buttonStyle = css`
+  margin-top: 100px;
+  width: 200px;
+`;
+
+export const btnContainer = css`
+  display: flex;
+  width: 114px;
+  height: 44px;
+  padding: 14px 27px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #3e83e9;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Pretendard;
+`;
+
+export const searchStyle = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;

@@ -17,6 +17,8 @@ import Review from "@pages/Review/Review";
 import MyPage from "@pages/MyPage/MyPage";
 import Setting from "@pages/Setting/Setting";
 import Data from "@pages/Data/Data";
+import OthersPage from "@pages/OthersPage/OthersPage";
+import ListProduct from "@pages/ListProduct/ListProduct";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,8 @@ const router = createBrowserRouter([
       { path: routes.mypage, element: <MyPage /> },
       { path: routes.setting, element: <Setting /> },
       { path: routes.data, element: <Data /> },
+      { path: `${routes.otherspage}/:userId`, element: <OthersPage /> },
+      { path: routes.listproduct, element: <ListProduct /> },
     ],
   },
 ]);

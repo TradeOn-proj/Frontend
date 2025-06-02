@@ -12,7 +12,7 @@ import {
 } from "./TemperatureBar.style";
 
 interface TemperatureProps {
-  points: number;
+  points?: number;
 }
 
 const gradeThresholds = [
@@ -44,8 +44,10 @@ const getGradeInfo = (points: number) => {
 };
 
 const TemperatureBar: React.FC<TemperatureProps> = ({ points }) => {
-  const { currentGrade, nextGrade, percentage } = getGradeInfo(points);
+  const fallbackPoints = Number(localStorage.getItem("userPoints")) || 0;
+  const actualPoints = points !== undefined ? points : fallbackPoints;
 
+  const { currentGrade, nextGrade, percentage } = getGradeInfo(actualPoints);
   return (
     <div css={container}>
       <div css={titleContainer}>

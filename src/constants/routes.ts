@@ -16,6 +16,8 @@ const routes = {
   mypage: "/mypage",
   setting: "/setting",
   data: "/data",
+  otherspage: "/otherspage",
+  listproduct: "/listproduct",
 } as const;
 
 export default routes;

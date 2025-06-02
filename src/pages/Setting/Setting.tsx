@@ -1,21 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   mainContainer,
   textFieldContainer,
   titleContainer,
 } from "./Setting.style";
 import { LoginButton, LoginTextField } from "@components/index";
+import usePatchUserProfile from "apis/hooks/user/userPatchUserProfile";
+import useUserProfile from "apis/hooks/user/userUserProfile";
 
 const Setting: React.FC = () => {
+  const userId = Number(localStorage.getItem("userId"));
+  const { data: userProfile, isLoading } = useUserProfile(userId);
+  const { mutate } = usePatchUserProfile(userId);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (userProfile) {
+      setName(userProfile.username);
+      setEmail(userProfile.email);
+    }
+  }, [userProfile]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // 로그인 API
+    mutate({
+      username: name,
+      email,
+    });
   };
+
   return (
     <div css={mainContainer}>
       <div css={titleContainer}>프로필 수정</div>
@@ -32,14 +47,10 @@ const Setting: React.FC = () => {
           onChange={setName}
           placeholder="닉네임"
         />
-        <LoginTextField
-          type="password"
-          value={password}
-          onChange={setPassword}
-          placeholder="비밀번호"
-        />
+        <LoginButton mode="login" type="submit">
+          수정하기
+        </LoginButton>
       </form>
-      <LoginButton mode={"login"} children={"수정하기"} />
     </div>
   );
 };

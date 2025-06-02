@@ -2,15 +2,16 @@ import { css } from "@emotion/react";
 
 export const mainContainer = css`
   width: 1024px;
-  padding-top: 120px;
-  padding-bottom: 300px;
-
+  padding-top: 50px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+`;
+
+export const title = css`
+  color: #3c3636;
+  font-size: 40px;
+  font-weight: 800;
 `;
 
 export const searchStyle = css`
@@ -22,6 +23,7 @@ export const textContainer = css`
   color: #383838;
   font-size: 16px;
   font-weight: 400;
+  padding-top: 20px;
 `;
 
 export const pointStyle = css`
@@ -31,6 +33,7 @@ export const pointStyle = css`
 `;
 
 export const productContent = css`
+  padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;

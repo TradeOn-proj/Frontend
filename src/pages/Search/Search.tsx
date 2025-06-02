@@ -9,7 +9,7 @@ const Search: React.FC = () => {
 
   const handleSearch = () => {
     if (query) {
-      navigate(`/search-result?query=${query}`);
+      navigate(`/search-result?query=${encodeURIComponent(query)}`);
     }
   };
 

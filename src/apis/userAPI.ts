@@ -1,9 +1,13 @@
-import { apiPost, authApiGet, authApiPost } from "./apiUtils";
-import type {ValuationListParams, ValuationListResponse } from "./types/value";
-import type {ValuationDetailResponse} from "./types/valuedetail";
+import { apiPost, authApiGet, authApiPatch, authApiPost } from "./apiUtils";
+import type { ValuationListParams, ValuationListResponse } from "./types/value";
+import type { ValuationDetailResponse } from "./types/valuedetail";
 import type { ValuationCreateRequest } from "./types/valueupload";
 import type {
+  getCategoriesResponse,
   loginResponse,
+  patchCategoriesRequest,
+  patchUserProfileRequest,
+  patchUserProfileResponse,
   postLoginParams,
   postRegisterParams,
   registerResponse,
@@ -27,25 +31,26 @@ export const getValuationList = async (
   return res;
 };
 
-export const getValuationDetail = async (postId: number): Promise<ValuationDetailResponse> => {
+export const getValuationDetail = async (
+  postId: number
+): Promise<ValuationDetailResponse> => {
   return await authApiGet<ValuationDetailResponse, void>(
     `/api/v1/valuations/${postId}`
   );
 };
 
 export const postValuationPrice = async (postId: number, price: number) => {
-  return await authApiPost<void, { price: number }, void >(
+  return await authApiPost<void, { price: number }, void>(
     `/api/v1/valuations/${postId}/price`,
     { price }
   );
 };
 
 export const postValuation = async (data: ValuationCreateRequest) => {
-  return await authApiPost<
-    { postId: number }, // 응답 타입
-    ValuationCreateRequest, // 바디 타입
-    void // 파라미터 없음
-  >("/api/v1/valuations", data);
+  return await authApiPost<{ postId: number }, ValuationCreateRequest, void>(
+    "/api/v1/valuations",
+    data
+  );
 };
 
 export const postLogin = async (data: postLoginParams) => {
@@ -60,3 +65,32 @@ export const getUserProfile = async (userId: number) => {
   return res.user;
 };
 
+export const patchUserCategories = async (
+  userId: number,
+  data: patchCategoriesRequest
+) => {
+  const res = await authApiPatch<void, patchCategoriesRequest, undefined>(
+    `/api/v1/users/${userId}/categories`,
+    data
+  );
+  return res;
+};
+
+export const getUserCategories = async (userId: number) => {
+  const res = await authApiGet<getCategoriesResponse, undefined>(
+    `/api/v1/users/${userId}/categories`
+  );
+  return res.categories.filter((c): c is string => c !== null); // null 제거
+};
+
+export const patchUserProfile = async (
+  userId: number,
+  data: patchUserProfileRequest
+): Promise<patchUserProfileResponse> => {
+  const res = await authApiPatch<
+    patchUserProfileResponse,
+    patchUserProfileRequest,
+    undefined
+  >(`/api/v1/users/${userId}/profile`, data);
+  return res;
+};

@@ -6,11 +6,19 @@ type BarData = {
 };
 
 interface MyBarProps {
-  data: BarData[];
+  data?: BarData[];
 }
 
 const BarChart: React.FC<MyBarProps> = ({ data }) => {
-  const maxValue = Math.max(...data.map((d) => d.trade));
+  const validData = (data ?? []).filter(
+    (d): d is BarData => typeof d.trade === "number" && !isNaN(d.trade)
+  );
+
+  if (validData.length === 0) {
+    return <div>표시할 거래 데이터가 없습니다.</div>;
+  }
+
+  const maxValue = Math.max(...validData.map((d) => d.trade), 0);
   const tickStep = 5;
   const tickValues = Array.from(
     { length: Math.ceil(maxValue / tickStep) + 1 },
@@ -19,31 +27,18 @@ const BarChart: React.FC<MyBarProps> = ({ data }) => {
 
   return (
     <ResponsiveBar
-      data={data}
+      data={validData}
       keys={["trade"]}
       indexBy="month"
       layout="vertical"
       colors={() => "#3E83E9"}
       labelSkipWidth={12}
       labelSkipHeight={12}
-      // legends={[
-      //   {
-      //     dataFrom: "keys",
-      //     anchor: "bottom-right",
-      //     direction: "column",
-      //     translateX: 120,
-      //     itemsSpacing: 3,
-      //     itemWidth: 100,
-      //     itemHeight: 16,
-      //   },
-      // ]}
       axisBottom={{
-        // legend: "월별",
         legendOffset: 32,
         tickRotation: 0,
       }}
       axisLeft={{
-        // legend: "거래 횟수",
         legendOffset: -40,
         tickValues: tickValues,
       }}
