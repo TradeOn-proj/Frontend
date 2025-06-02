@@ -35,11 +35,11 @@ const Home: React.FC = () => {
     <div css={mainContainer}>
       <img src={Banner} alt="배너 이미지" />
       <div css={buttonContainer}>
-        <div css={buttonEach}>
+        <div css={buttonEach}onClick={()=> navigate ("/upload")}>
           <img src={Post} alt="물품 등록" css={iconStyle} />
           물품 등록
         </div>
-        <div css={buttonEach}>
+        <div css={buttonEach}onClick={()=> navigate ("/chat")}>
           <img src={Chat} alt="채팅" css={iconStyle} />
           채팅
         </div>

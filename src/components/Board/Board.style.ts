@@ -57,7 +57,7 @@ export const tag = css`
   font-size: 20px;
   font-weight: 800;
   margin-top: 18px;
-  width: 210px;
+  width: 300px;
   height: 24px;
 `
 
@@ -66,7 +66,7 @@ export const people = css`
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 800;
-  margin-left: 368px;
+  margin-left: 300px;
   width: 94px;
 `
 

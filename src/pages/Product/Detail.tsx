@@ -4,17 +4,26 @@ import {container, titleContainer, title, date, row, image
 } from "./Detail.style"
 import {Product} from "@assets/index";
 import {Card} from "@components/index";
+import {useParams} from "react-router-dom";
+import useGetPostDetail from "apis/hooks/item/useGetPostDetail";
 
 const Detail = () =>{
-    const products = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-  ];
+    const { postId } = useParams<{ postId: string }>();
+  const id = parseInt(postId ?? "0", 10);
+
+  const { data, isLoading, error } = useGetPostDetail(id);
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error || !data) return <div>에러 발생</div>;
+
+  const imageUrl = data.thumbnail_image_url.startsWith("http")
+    ? data.thumbnail_image_url
+    : `${import.meta.env.VITE_BASE_URL}${data.thumbnail_image_url}`;
+
     return(
     <div css={container}>
      <div css={titleContainer}>
-        <span css={title}>상품 상세</span>
+        <span css={data.title}>상품 상세</span>
         <span css={date}>작성일 : 2025년 3월 1일</span>
      </div>
      <div css={row}>

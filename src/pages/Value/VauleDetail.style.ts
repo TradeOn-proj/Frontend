@@ -64,6 +64,7 @@ export const productName=css`
   font-size: 25px;
   font-weight: 800;
   line-height: normal;
+  width: 400px;
 `
 
 export const keywordlist = css`
@@ -76,7 +77,8 @@ font-size: 25px;
 font-style: normal;
 font-weight: 800;
 line-height: normal;
-margin-top: 40px;
+margin-top: 90px;
+
 `
 export const keyword = css`
   color: #676767;
@@ -90,7 +92,7 @@ export const tagContainer = css`
   display: flex;
   flex-direction: row;
   gap: 26px;
-  margin-top: 245px;
+  margin-left: 110px;
 `
 
 export const tag = css`

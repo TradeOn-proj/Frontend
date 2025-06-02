@@ -4,7 +4,7 @@ const routes = {
   value: "/value",
   upload: "/upload",
   valueupload: "/valueupload",
-  detail: "/detail",
+  detail: "/detail/:postId",
   valuedetail: "/valuedetail/:postId",
   search: "/search",
   searchresult: "/search-result",
@@ -16,6 +16,7 @@ const routes = {
   mypage: "/mypage",
   setting: "/setting",
   data: "/data",
+  chat: "/chat",
 } as const;
 
 export default routes;
