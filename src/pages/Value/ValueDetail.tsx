@@ -1,6 +1,6 @@
 import {container, titleContainer, title, date, row, image
     , column, productName, keywordlist, keyword,  infoContainer
-    ,line, describe, price, productPrice,
+    ,line, describe, price, productPrice,tag, tagContainer
 } from "./VauleDetail.style"
 import {Product} from "@assets/index";
 import {Vote} from "@components/index";
@@ -24,23 +24,25 @@ const ValueDetail = () =>{
      </div>
      <div css={row}>
         {/* <Product css={image} /> svg일때만 가능능 */}
-        <img src={Product} css={image}/>
+        <img src={data.image} css={image}/>
         <div css={infoContainer}>
-            <div css={row}>
                 <div css={column}>
+                    <div css={row}>
               <span css={productName}>{data.title}</span>
+               <div css={tagContainer}>
+                <div css={tag}>{data.totalEvaluations}명 참여 중</div>
+                </div>
+            </div> 
               <div css={keywordlist}>
                 <span css={keyword}>#{data.category}</span>
                 {/* <span css={keyword}>#바람막이</span> */}
                 </div>
-                <div css={productPrice}>{data.averagePrice}원
+                <div css={productPrice}>현재 평가 가격 : {data.averagePrice}원
 
                 </div>
               </div>
-            </div>
-            {/* <div css={tagContainer}>
-                <div css={tag}>#{data.category}</div>
-            </div> */}
+            
+            
         </div> 
         </div>
         <div css={line} />
