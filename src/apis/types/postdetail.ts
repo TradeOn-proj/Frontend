@@ -1,8 +1,9 @@
 export interface PostDetailResponse {
-  postId: number;
+  id: number;
   title: string;
   description: string;
   category: string;
-  createdAt: string;
   thumbnail_image_url: string;
+  created_at: string;
+  user_id: number;
 }

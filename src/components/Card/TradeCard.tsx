@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { Product } from "@assets/index";
 import {
-  card, image, info, title, tags, status, reviewBtn, dot
+  card, image, info, title, tags, status, reviewBtn, dot, titleContainer
 } from "./TradeCard.style";
+
 interface TradeCardProps {
   item: {
     id: number;
@@ -10,15 +11,17 @@ interface TradeCardProps {
     tags: string[];
     status: string;
     button: string;
+    image?: string;
   };
 }
 const TradeCard = ({item}: TradeCardProps) => {
   return (
     <div css={card}>
-      <img src={Product} css={image} />
+      <img src={item.image || Product} css={image} />
       <div css={info}>
+        <div css={titleContainer}>
         <div css={title}>
-          {item.name}
+          {item.name}</div>
           <span css={status}>{item.status}</span>
           <span css={dot}>⋯</span>
         </div>

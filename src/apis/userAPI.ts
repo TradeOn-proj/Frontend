@@ -4,7 +4,7 @@ import type { ValuationDetailResponse } from "./types/valuedetail";
 import type { ValuationCreateRequest } from "./types/valueupload";
 import type { ChatRoomListResponse } from "./types/chat";
 import type { PostDetailResponse } from "./types/postdetail"
-
+import type {TradeProposalRequest} from "./types/trade"
 import type {
   getCategoriesResponse,
   loginResponse,
@@ -151,3 +151,9 @@ export const patchUserProfile = async (
   return res;
 };
 
+export const postTradeProposal = async (data: TradeProposalRequest) => {
+  return await authApiPost<void, TradeProposalRequest, void>(
+    "/api/v1/trades",
+    data
+  );
+};

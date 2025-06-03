@@ -23,6 +23,7 @@ export const title=css`
   font-size: 24px;
   font-weight: 800;
   margin-left: 18px;
+  width: 200px;
 
 `
 
@@ -31,7 +32,7 @@ export const date = css`
   font-family: Pretendard;
   font-size: 15px;
   font-weight: 600;
-  margin-left: 747px;
+  margin-left: 607px;
 
 `
 
@@ -64,6 +65,7 @@ export const productName=css`
   font-size: 25px;
   font-weight: 800;
   line-height: normal;
+  width: 550px;
 `
 
 export const keywordlist = css`
@@ -80,14 +82,15 @@ export const keyword = css`
 export const chat = css`
   border-radius: 36px;
   background: #3E83E9;
-  width: 180px;
-  height: 48px;
+  width: 200px;
+  height: 60px;
   color: #FFF;
   text-align: center;
   font-family: Pretendard;
   font-size: 20px;
   font-weight: 600;
-  margin-left: 180px;
+  /* margin-left: 100px; */
+  margin-top: 230px;
 `
 
 export const tagContainer = css`

@@ -10,6 +10,7 @@ export const title=css`
   color: #3C3636;
   font-size: 40px;
   font-weight: 800;
+  width: 400px;
 `
 export const line=css`
   width: 1024px;

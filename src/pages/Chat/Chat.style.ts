@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 
 export const container = css`
   display: flex;
-  height: 1024px;
-  width: 1440px;
+   height: 100vh;         // 화면 높이 100%
+  width: 100vw;          // 화면 너비 100%
   font-family: Pretendard;
 
 `;
@@ -22,11 +22,22 @@ export const chatHeader = css`
   padding: 0 18px;
   border-bottom: 1px solid #E0E0E2;
 `;
+export const reservationTag = css`
+  background-color: #3b82f6;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  margin-left: 20px;
+  border-radius: 12px;
+  height: 25px;
+`;
 
 export const chatPerson= css`
 font-size: 22px;
 color: #3C3636;
 font-weight: 600;
+display: flex;
+align-items: center;
 `
 export const grayBtn = css`
   background: #f1f1f1;
@@ -50,7 +61,7 @@ font-weight: 600;
   cursor: pointer;
   width: 141px;
 height: 35px;
-margin-left: 13px;
+margin-right: 13px;
 `;
 
 export const messageList = css`
