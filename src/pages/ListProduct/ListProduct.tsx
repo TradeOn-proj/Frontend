@@ -45,7 +45,8 @@ const ListProduct: React.FC = () => {
     <div css={mainContainer}>
       <p css={title}>전체 상품</p>
       <div css={textContainer}>
-        최근 등록된 인기 카테고리의 상품만 보여드려요!
+        방금 등록된 상품부터 순서대로 볼 수 있어요. 교환할 만한 물건을
+        살펴보세요.{" "}
       </div>
       <div css={productContent}>
         {loading ? (
