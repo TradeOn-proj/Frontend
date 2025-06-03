@@ -19,6 +19,7 @@ export interface Post {
   category: string;
   user_id: number;
   created_at: string;
+  thumbnail_image_url: string;
 }
 
 export interface getPostResponse {
