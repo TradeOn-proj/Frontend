@@ -12,7 +12,6 @@ import {
 import { Card, KeyWord } from "@components/index";
 import { useNavigate } from "react-router-dom";
 import useGetUserCategories from "apis/hooks/user/useGetCategories";
-import { useEffect } from "react";
 import useGetRecommendPosts from "apis/hooks/post/useGetRecommend";
 
 const Home: React.FC = () => {
@@ -22,50 +21,34 @@ const Home: React.FC = () => {
 
   const {
     data: categories,
-    isLoading,
-    error,
-    refetch,
+    isLoading: isCategoryLoading,
+    error: categoryError,
   } = useGetUserCategories(userId);
 
   const {
     data: recommendedPosts,
     isLoading: isPostsLoading,
     error: postsError,
-  } = useGetRecommendPosts();
+  } = useGetRecommendPosts(isLoggedIn);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      refetch();
-    }
-  }, [isLoggedIn]);
-
-  const handleKeyWord = () => {
-    navigate(`/keywordpage`);
-  };
-
-  const handleListProduct = () => {
-    navigate(`/listproduct`);
-  };
+  const handleKeyWord = () => navigate("/keywordpage");
+  const handleListProduct = () => navigate("/listproduct");
 
   return (
     <div css={mainContainer}>
       <img src={Banner} alt="배너 이미지" />
+
       <div css={buttonContainer}>
-        <div css={buttonEach}onClick={()=> navigate ("/upload")}>
+        <div css={buttonEach} onClick={() => navigate("/upload")}>
           <img src={Post} alt="물품 등록" css={iconStyle} />
           물품 등록
         </div>
-        <div css={buttonEach}onClick={()=> navigate ("/chat")}>
+        <div css={buttonEach} onClick={() => navigate("/chat")}>
           <img src={Chat} alt="채팅" css={iconStyle} />
           채팅
         </div>
-        <div css={buttonEach}>
-          <img
-            src={Group}
-            alt="공동 구매"
-            css={iconStyle}
-            onClick={handleListProduct}
-          />
+        <div css={buttonEach} onClick={handleListProduct}>
+          <img src={Group} alt="공동 구매" css={iconStyle} />
           상품 전체보기
         </div>
         <div css={buttonEach} onClick={() => navigate("/value")}>
@@ -81,9 +64,9 @@ const Home: React.FC = () => {
         <div css={keyContent}>
           {!isLoggedIn ? (
             <p>로그인을 해주세요.</p>
-          ) : isLoading ? (
+          ) : isCategoryLoading ? (
             <p>키워드를 불러오는 중입니다...</p>
-          ) : error ? (
+          ) : categoryError ? (
             <p>키워드 정보를 가져오지 못했습니다.</p>
           ) : categories && categories.length > 0 ? (
             categories.map((keyword) => (
@@ -111,7 +94,7 @@ const Home: React.FC = () => {
                   id: post.id,
                   title: post.title,
                   category: post.category,
-                  thumbnail_image_url: post.thumbnail_image_url,
+                  thumbnail_image_url: post.thumbnail_image_url ?? "",
                 }}
               />
             ))
