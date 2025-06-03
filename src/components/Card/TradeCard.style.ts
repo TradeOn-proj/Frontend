@@ -6,7 +6,7 @@ export const card = css`
   border-radius: 20px;
   padding: 16px;
   width: 1024px;
-  height: 279px; 
+  height: auto;
 `;
 
 export const image = css`
@@ -29,6 +29,7 @@ export const title = css`
   align-items: center;
   gap: 29px;
   color: #444;
+  width: 500px;
 `;
 
 export const status = css`
@@ -44,24 +45,30 @@ export const status = css`
 `;
 
 export const dot = css`
-  margin-left: auto;
+  margin-left: 10px;
   font-size: 30px;
   cursor: pointer;
   color: #989BA2;
 `;
+
+export const titleContainer=css`
+display: flex;
+flex-direction: row;
+`
 
 export const tags = css`
   font-size: 20px;
   color: #676767;
   font-weight: 800;
   margin-top: 18px;
+  right: 0;
 `;
 
 export const reviewBtn = css`
   background: #3C3C3C;
   color: white;
   border: none;
-  margin-top: 110px;
+  margin-top: 90px;
   border-radius: 10px;
   cursor: pointer;
   width: 608px;

@@ -1,5 +1,5 @@
 import {container, chatArea,chatHeader, blackBtn,
-    messageList,dateDivider,scheduleBox,time, inputArea, sendBtn, inputBox,
+    messageList,dateDivider,scheduleBox,reservationTag,time, inputArea, sendBtn, inputBox,
     msgMe, msgOther, chatPerson
 } from "./Chat.style"
 import { useState, useEffect } from "react";
@@ -7,6 +7,9 @@ import ChatSidebar from "./ChatSidebar";
 import useSocket from "apis/hooks/chat/useSocket";
 import socket from "libs/socket";
 import { useParams } from "react-router-dom";
+import TradePromiseModal from "./TradePromiseModal";
+import TradeCompleteModal from "./TradeCompleteModal";
+
 
 interface ChatMessage {
   user: string;
@@ -17,7 +20,9 @@ interface ChatMessage {
 const Chat = ({ roomId, userId }: { roomId: string; userId: string }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
-
+  const [reservationDate, setReservationDate] = useState<string | null>(null);
+  const [isPromiseModalOpen, setIsPromiseModalOpen] = useState(false);
+const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
   console.log("✅ roomId:", roomId, "userId:", userId);
  // ✅ join 이벤트 보내기 (처음 마운트 시)
   useEffect(() => {
@@ -47,17 +52,41 @@ const Chat = ({ roomId, userId }: { roomId: string; userId: string }) => {
     setInput("");
   };
 
-
+const openPromiseModal = () => setIsPromiseModalOpen(true);
+const closePromiseModal = () => setIsPromiseModalOpen(false);
+ const handleReservationSuccess = (date: string) => {
+    setReservationDate(date); // 🔥 성공한 날짜 저장
+  };
+  const openCompleteModal = () => setIsCompleteModalOpen(true);
+const closeCompleteModal = () => setIsCompleteModalOpen(false);
 
  return (
     <div css={container}>
 
       <div css={chatArea}>
         <div css={chatHeader}>
-          <div css={chatPerson}>● 거래할래요</div>
+          <div css={chatPerson}>● 거래할래요
+          {reservationDate && (
+      <span css={reservationTag}>
+        {new Date(reservationDate).toLocaleString("ko-KR", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })} 예약</span>
+    )}
+    </div>
           <div>
-            <button css={blackBtn}>약속잡기 🗓</button>
-            <button css={blackBtn}>거래완료 ✔</button>
+            <button css={blackBtn} onClick={openPromiseModal}>약속잡기 🗓</button>
+            {isPromiseModalOpen && (
+      <TradePromiseModal
+                chatroomId={parseInt(roomId)}
+                onClose={closePromiseModal}
+                onSuccess={handleReservationSuccess} // 🔥 콜백 전달
+              />
+            )}
+            <button css={blackBtn} onClick={openCompleteModal}>거래완료 ✔</button>
+            {isCompleteModalOpen && (
+            <TradeCompleteModal
+            tradeId={112}
+            onClose={closeCompleteModal}
+  />
+)}
           </div>
         </div>
 

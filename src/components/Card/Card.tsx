@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
   const navigate = useNavigate();
 
   const handlePost = () => {
-    navigate(`/detail`);
+    navigate(`/detail/${post.id}`);
   };
   if (!post) return null;
   return (

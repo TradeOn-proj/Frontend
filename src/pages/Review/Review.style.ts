@@ -27,14 +27,24 @@ export const productContainer = css`
     height: 157px;
     border-radius: 20px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 50%;
     border: 1px solid #989BA2;
   }
 `;
 
-export const productInfo = css`
- 
-`;
+export const comment = css`
+color: #3C3636;
+  font-size: 20px;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-left: 10px;
+  
+`
+
+export const inputbox = css`
+`
 
 export const productName=css`
   color: #3C3636;
@@ -99,4 +109,26 @@ export const buttonRow = css`
   gap: 16px;
   justify-content: center;
   margin-top: 122px;
+`;
+
+export const scoreLabel = css`
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-align: center;
+`;
+
+export const scoreInputWrapper = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 80px;
+`;
+
+export const scoreInput = css`
+  width: 400px;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #999;
+  border-radius: 4px;
 `;

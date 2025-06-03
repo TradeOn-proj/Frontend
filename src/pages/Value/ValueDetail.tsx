@@ -14,6 +14,11 @@ const ValueDetail = () =>{
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error || !data) return <div>에러 발생</div>;
+  const imageUrl = data.image.startsWith("http")
+  ? data.image
+  : `${import.meta.env.VITE_BASE_URL}${data.image}`;
+
+
     return(
     <div css={container}>
      <div css={titleContainer}>
@@ -24,7 +29,7 @@ const ValueDetail = () =>{
      </div>
      <div css={row}>
         {/* <Product css={image} /> svg일때만 가능능 */}
-        <img src={data.image} css={image}/>
+        <img src={imageUrl} css={image}/>
         <div css={infoContainer}>
                 <div css={column}>
                     <div css={row}>
