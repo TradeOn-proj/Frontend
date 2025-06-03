@@ -1,4 +1,4 @@
-import { authApiGet } from "./apiUtils";
+import { apiGet, authApiGet } from "./apiUtils";
 import type {
   getPostParams,
   getPostResponse,
@@ -16,7 +16,7 @@ export const getRecommendPosts = async (): Promise<RecommendPost[]> => {
 export const getPosts = async (
   params?: getPostParams
 ): Promise<getPostResponse> => {
-  const res = await authApiGet<getPostResponse, getPostParams>(
+  const res = await apiGet<getPostResponse, getPostParams>(
     "/api/v1/posts",
     params
   );
