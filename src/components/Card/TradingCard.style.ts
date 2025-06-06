@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 export const container = css`
   width: 1024px;
-  height: 279px;
+  height: 300px;
   border: 1px solid #d4d4d4;
   padding: 22px 25px;
   border-radius: 20px;

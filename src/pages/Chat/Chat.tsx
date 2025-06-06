@@ -65,7 +65,7 @@ const closeCompleteModal = () => setIsCompleteModalOpen(false);
 
       <div css={chatArea}>
         <div css={chatHeader}>
-          <div css={chatPerson}>● 거래할래요
+          <div css={chatPerson}>● 거래거래왕
           {reservationDate && (
       <span css={reservationTag}>
         {new Date(reservationDate).toLocaleString("ko-KR", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })} 예약</span>
@@ -83,7 +83,7 @@ const closeCompleteModal = () => setIsCompleteModalOpen(false);
             <button css={blackBtn} onClick={openCompleteModal}>거래완료 ✔</button>
             {isCompleteModalOpen && (
             <TradeCompleteModal
-            tradeId={112}
+            tradeId={113}
             onClose={closeCompleteModal}
   />
 )}
@@ -100,7 +100,10 @@ const closeCompleteModal = () => setIsCompleteModalOpen(false);
           {messages.map((msg, i) => (
             <div key={i} css={msg.user === userId ? msgMe : msgOther}>
               <div>{msg.msg}</div>
-              <span css={time}>{new Date().toLocaleTimeString().slice(0, 5)}</span>
+              <span css={time}> {new Date().toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  })}</span>
             </div>
           ))}
         </div>

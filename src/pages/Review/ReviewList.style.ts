@@ -4,7 +4,7 @@ export const container = css`
   width: 1024px;
   margin: 0 auto;
   padding: 40px 20px;
-  height: 1200px;
+  height: 1400px;
 `;
 
 export const title = css`
