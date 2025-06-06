@@ -72,7 +72,7 @@ const TradingCard: React.FC<TradingCardProps> = ({ trade }) => {
           </div>
           <div css={keyWordContainer}>
             {trade.usercategories.slice(0, 3).map((keyword, index) => (
-              <KeyWord key={index} text={`#${keyword}`} />
+              <KeyWord key={index} text={`${keyword}`} />
             ))}
           </div>
         </div>

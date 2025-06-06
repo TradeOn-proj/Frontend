@@ -16,7 +16,7 @@ export const getRecommendPosts = async (): Promise<RecommendPost[]> => {
 export const getPosts = async (
   params?: getPostParams
 ): Promise<getPostResponse> => {
-  const res = await apiGet<getPostResponse, getPostParams>(
+  const res = await authApiGet<getPostResponse, getPostParams>(
     "/api/v1/posts",
     params
   );

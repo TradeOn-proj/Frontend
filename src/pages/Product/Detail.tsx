@@ -71,8 +71,8 @@ const Detail = () =>{
         </div>
         <div css={line} />
         <div css={describe}>{data.description}</div>
-        <div css={line} />
-        <div css={show}>비슷한 키워드 상품 보기</div>
+        {/* <div css={line} />
+        <div css={show}>비슷한 키워드 상품 보기</div> */}
           {/* <div css={keywordProduct}>
           {products.map((product) => (
             <Card key={product.id} />

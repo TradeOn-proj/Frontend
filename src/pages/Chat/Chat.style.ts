@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 export const container = css`
   display: flex;
-   height: 100vh;         // 화면 높이 100%
+   height: 80vh;         // 화면 높이 100%
   width: 100vw;          // 화면 너비 100%
   font-family: Pretendard;
 
@@ -96,6 +96,7 @@ export const time = css`
   text-align: right;
   margin-top: 4px;
   color: #aaa;
+  margin-right: 10px;
 `;
 
 export const dateDivider = css`

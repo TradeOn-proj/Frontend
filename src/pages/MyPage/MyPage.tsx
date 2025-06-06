@@ -57,17 +57,18 @@ const MyPage: React.FC = () => {
           보유포인트
           <div css={content}>
             <Left css={leftStyle} />
+            
             {profile.current_points}
           </div>
         </div>
-        <div css={selectBox}>
+        <div css={selectBox}onClick={() => navigate("/tradehistory")}>
           거래내역
           <div css={content}>
             <Left css={leftStyle} />
             {profile.total_trades}
           </div>
         </div>
-        <div css={selectBox}>
+        <div css={selectBox}onClick={() => navigate("/reviewlist")}>
           리뷰
           <div css={content}>
             <Left css={leftStyle} />

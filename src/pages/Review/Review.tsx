@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Review=() =>{
   const [content, setContent] = useState("");
    const navigate = useNavigate();
-  const tradeId = 112;
+  const tradeId = 113;
 
      const [score, setScore] = useState<number | ''>('');
 
